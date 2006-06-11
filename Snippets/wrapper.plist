@@ -7,7 +7,7 @@
 	$2
 [% END %]</string>
 	<key>name</key>
-	<string>wrapper</string>
+	<string>wrapper (wrap)</string>
 	<key>scope</key>
 	<string>text.html.tt</string>
 	<key>tabTrigger</key>
