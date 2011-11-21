@@ -8,10 +8,6 @@
 	</array>
 	<key>firstLineMatch</key>
 	<string>\[%.+?%\]</string>
-	<key>foldingStartMarker</key>
-	<string>(&lt;(?i:(head|table|tr|div|style|script|ul|ol|form|dl))\b.*?&gt;|^ *\[%[^%]*\b(?:FOR|WRAPPER|SWITCH|FOREACH|IF|UNLESS|BLOCK|MACRO|FILTER|PERL|TRY)\b(?!.*END *%\]))</string>
-	<key>foldingStopMarker</key>
-	<string>(&lt;/(?i:(head|table|tr|div|style|script|ul|ol|form|dl))&gt;|^ *\[% *END *%\])</string>
 	<key>keyEquivalent</key>
 	<string>^~T</string>
 	<key>name</key>
