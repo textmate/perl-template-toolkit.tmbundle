@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE plist PUBLIC "-//Apple Computer//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
 	<key>fileTypes</key>
@@ -16,43 +16,92 @@
 	<array>
 		<dict>
 			<key>begin</key>
-			<string>(?=\[% *(?:RAW)?PERL\b.*? *%\])</string>
-			<key>contentName</key>
-			<string>source.perl</string>
+			<string>(^\s*)?(?=\[% *(?:RAW)?PERL\b.*? *%\])</string>
+			<key>beginCaptures</key>
+			<dict>
+				<key>0</key>
+				<dict>
+					<key>name</key>
+					<string>punctuation.whitespace.embedded.leading.perl</string>
+				</dict>
+			</dict>
 			<key>end</key>
-			<string>(\[%) *(END) *(%\])</string>
+			<string>(?!\G)(\s*\n)?</string>
 			<key>endCaptures</key>
 			<dict>
 				<key>0</key>
 				<dict>
 					<key>name</key>
-					<string>meta.tag.template.tt</string>
-				</dict>
-				<key>1</key>
-				<dict>
-					<key>name</key>
-					<string>punctuation.definition.tag.tt</string>
-				</dict>
-				<key>2</key>
-				<dict>
-					<key>name</key>
-					<string>entity.name.tag.tt</string>
-				</dict>
-				<key>3</key>
-				<dict>
-					<key>name</key>
-					<string>punctuation.definition.tag.tt</string>
+					<string>punctuation.whitespace.embedded.trailing.perl</string>
 				</dict>
 			</dict>
 			<key>patterns</key>
 			<array>
 				<dict>
-					<key>include</key>
-					<string>#tmpl-container-tag</string>
-				</dict>
-				<dict>
-					<key>include</key>
-					<string>source.perl</string>
+					<key>begin</key>
+					<string>(?=\[% *(?:RAW)?PERL\b.*? *%\])</string>
+					<key>end</key>
+					<string>(\[%) *(END) *(%\])</string>
+					<key>endCaptures</key>
+					<dict>
+						<key>0</key>
+						<dict>
+							<key>name</key>
+							<string>meta.tag.template.tt</string>
+						</dict>
+						<key>1</key>
+						<dict>
+							<key>name</key>
+							<string>punctuation.definition.tag.tt</string>
+						</dict>
+						<key>2</key>
+						<dict>
+							<key>name</key>
+							<string>entity.name.tag.tt</string>
+						</dict>
+						<key>3</key>
+						<dict>
+							<key>name</key>
+							<string>punctuation.definition.tag.tt</string>
+						</dict>
+					</dict>
+					<key>name</key>
+					<string>meta.embedded.block.perl</string>
+					<key>patterns</key>
+					<array>
+						<dict>
+							<key>begin</key>
+							<string>(?=\[% *(?:RAW)?PERL\b.*? *%\])</string>
+							<key>end</key>
+							<string>(?!\G)</string>
+							<key>patterns</key>
+							<array>
+								<dict>
+									<key>include</key>
+									<string>#tmpl-container-tag</string>
+								</dict>
+							</array>
+						</dict>
+						<dict>
+							<key>begin</key>
+							<string>(?!\G)</string>
+							<key>end</key>
+							<string>(?=\[% *(END) *%\])</string>
+							<key>name</key>
+							<string>source.perl</string>
+							<key>patterns</key>
+							<array>
+								<dict>
+									<key>include</key>
+									<string>#tmpl-container-tag</string>
+								</dict>
+								<dict>
+									<key>include</key>
+									<string>source.perl</string>
+								</dict>
+							</array>
+						</dict>
+					</array>
 				</dict>
 			</array>
 		</dict>
